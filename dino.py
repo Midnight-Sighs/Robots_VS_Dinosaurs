@@ -10,8 +10,7 @@ class Dino:
         self.scales = scales
         self.attack_power = attack
         self.stamina = 100
-        self.dino_attack()
-        self.damage = self.dino_attack + self.attack_power
+        
 
     attack_claws = Attack("Claws", 10)
     attack_bite = Attack("Bite", 15)

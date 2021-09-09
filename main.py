@@ -1,1 +1,4 @@
-## only putting "start" here
+from battlefield import Battlefield
+
+
+start = Battlefield()
