@@ -1,9 +1,11 @@
+from robot import equip_weapon
 from fleet import Fleet
-
 from herd import Herd
 
-
-#__init__
+class Battlefield:
+    def __init__(self):
+        self.fleet = Fleet
+        self.Herd = Herd
 
 def welcome():
     print("Welcome to our feature battle of Dinosaurs vs Robots!  We have beings from across the galaxy that have prepared teams for you to battle with!  Today, we have the Roombers supplying fleets of modified (and enlarged!) Roombas!  From the planet Jurrrrasic, we have herds of dinosaurs for you to choose from!")
@@ -19,14 +21,17 @@ def choose_your_side():
         player.choose_fleet_type(player)
         print(player.list)
         computer = Herd
-        computer.list = balanced_list
+        computer.assign_computer_to_herd(computer)
     if choose_creatures.lower()== "dinos" or choose_creatures.lower()== "dinosaurs" or choose_creatures.lower()== "dino":
         player = Herd
         player.choose_herd_type(player)
         print(player.list)
         computer = Fleet
-        computer.list = balanced_robots
+        computer.assign_computer_to_fleet(computer)
 
+def robot_weapons(player):
+    for robots in player.list:
+        equip_weapon(player.list)
         
         
         
@@ -47,3 +52,4 @@ def choose_your_side():
 #run game
 player_name = welcome()
 choose_your_side()
+robot_weapons(player)

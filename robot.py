@@ -10,7 +10,8 @@ class Robo:
         self.armor = armor
         self.attack_power = attack
         self.battery_charge = 100
-
+        self.weapon = equip_weapon()
+        self.damage = self.weapon + self.attack_power
 
 super_sucker = Weapon("Super Sucker", 20)
 debris_cannon = Weapon("Debris Cannon", 15)
@@ -45,6 +46,21 @@ def equip_weapon(self):
         if choice == 2:
             self.weapon = debris_sucker
 
+def equip_weapon_for_computer(self):
+    if self.type == "squish":
+        self.weapon = super_sucker
+    if self.type == "tank":
+        self.weapon = debris_cannon
+    if self.type == "basic":
+        self.weapon = debris_sucker
 
-# they can attack on their turn
-#they can defend on their turn
+def robot_attack(self, dino):
+    damage = self.damage - dino.scales
+    dino.health -= damage
+    self.battery_charge -=10
+
+def robot_defense(self):
+    self.battery_charge += 20
+    defense = self.armor + 10
+    return defense
+

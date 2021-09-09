@@ -26,3 +26,9 @@ class Fleet:
         if fleet_choice == "3":
             self.list = squish_robots
             print("You have selected our squishy robots!")
+            print(self.list)
+
+    def assign_computer_to_fleet(self):
+        self.list = balanced_robots
+        
+        print("Your opponent has chosen their list.")
