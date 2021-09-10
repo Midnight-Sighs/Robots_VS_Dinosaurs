@@ -1,3 +1,7 @@
+from robot import random_int
+from attack import Attack
+import random
+
 class Dinosaur:
     def __init__(self, name, hp, attack):
         self.name = name
@@ -6,6 +10,11 @@ class Dinosaur:
         self.stamina = 100
         self.scales = 5
     
+    possible_attacks = [Attack("Claws", 10),
+                    Attack("Bite", 15),
+                    Attack("Spit", 5)]
+
     def dinosaur_attack(self, robot):
-        robot.hp -= (self.attack - robot.armor)
+        i = random_int(0, 2)
+        robot.hp -= (self.attack + self.possible_attacks[i].attack) - (robot.armor + robot.flux_shield())
         self.stamina -= 10
