@@ -1,4 +1,8 @@
 from weapon import Weapon
+import random
+
+def random_int(min, max):
+    return random.randint(min, max)
 
 class Robot:
     def __init__(self, name, hp):
@@ -11,3 +15,12 @@ class Robot:
     def robot_attack(self, dinosaur):
         dinosaur.hp -= (self.weapon.attack - dinosaur.scales)
         self.battery_charge -= 10
+
+    equippable_weapons = [Weapon("Super Sucker", 15), 
+                        Weapon("Debris Cannon", 15),
+                        Weapon("Debris Blaster", 5),
+                        Weapon("Debris Sucker", 10)]
+
+    def equip_weapon(self):
+        i = random_int(0, 3)
+        self.weapon = self.equippable_weapons[i]

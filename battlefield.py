@@ -14,6 +14,7 @@ class Battlefield:
         print("Your name is " + self.player_name+".  Huh.  Interesting...")
 
     def battle(self):
+        self.fleet.equip_fleet_weapons()
         d=0
         r=0
         while r <=2 or d <=2:
@@ -21,7 +22,7 @@ class Battlefield:
             self.herd.dino_list[d].dinosaur_attack(self.fleet.robot_list[r])
             print(self.fleet.robot_list[r].hp)
             if self.fleet.robot_list[r].hp <= 0:
-                print(self.fleet.robot_list[r].hp, self.herd.dino_list[d].stamina)
+                print("Robot HP:", self.fleet.robot_list[r].hp)
                 print("A robot has died.")
                 r += 1
             if r == 3 and self.fleet.robot_list[2].hp <= 0:
@@ -29,7 +30,7 @@ class Battlefield:
                 break
             print("The roomba attempts to fire debris at the dinosaur.")
             self.fleet.robot_list[r].robot_attack(self.herd.dino_list[d])
-            print(self.herd.dino_list[d].hp)
+            print("Dinosaur HP:", self.herd.dino_list[d].hp)
             if self.herd.dino_list[d].hp <= 0:
                 print("NOOO!! A dino has fallen!!")
                 d +=1
