@@ -1,12 +1,6 @@
 from fleet import Fleet
 from herd import Herd
 
-def dinosaur_attack(dinosaur, robot):
-    robot.hp -= dinosaur.attack
-
-def robot_attack(robot, dinosaur):
-    dinosaur.hp -= robot.weapon.attack
-
 class Battlefield:
     def __init__(self):
         self.player_name = self.display_welcome()
@@ -26,17 +20,19 @@ class Battlefield:
             print("The dinosaur gnaws at a Roomba.")
             self.herd.dino_list[d].dinosaur_attack(self.fleet.robot_list[r])
             print(self.fleet.robot_list[r].hp)
-            if self.fleet.robot_list[r].hp >= 0:
+            if self.fleet.robot_list[r].hp <= 0:
+                print(self.fleet.robot_list[r].hp, self.herd.dino_list[d].stamina)
                 print("A robot has died.")
                 r += 1
-            if r == 2 and self.fleet.robot_list[2].hp >= 0:
+            if r == 3 and self.fleet.robot_list[2].hp <= 0:
                 print("THE DINOSAURS ARE VICTORIOUS! RAWR!")
                 break
             print("The roomba attempts to fire debris at the dinosaur.")
             self.fleet.robot_list[r].robot_attack(self.herd.dino_list[d])
             print(self.herd.dino_list[d].hp)
-            if self.herd.dino_list[d].hp >= 0:
+            if self.herd.dino_list[d].hp <= 0:
                 print("NOOO!! A dino has fallen!!")
                 d +=1
-            if d == 2 and self.herd.dino_list[2].hp >= 0:
+            if d == 3 and self.herd.dino_list[2].hp <= 0:
                 print("The roombas are taking over the world.  ")
+                break
